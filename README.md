@@ -21,7 +21,7 @@
 
 ## 开始
 
-> **重要:** 若要部署和运行此示例，需要一个为 >  ** Azure OpenAI 服务启用访问权限的 Azure 订阅。 ** 您可以在此处请求访问权限。还可以访问此处获取一些免费的 Azure 额度，以帮助你入门。
+> **重要:** 若要部署和运行此示例，需要一个为 >  **Azure OpenAI 服务启用访问权限的 Azure 订阅。** 您可以在此处请求访问权限。还可以访问此处获取一些免费的 Azure 额度，以帮助你入门。
 
 
 
@@ -53,9 +53,9 @@
 1. 创建一个新文件夹并在终端中切换到它
 2. 运行 `azd login`
 3. 运行 `azd init`
-4. 输入`Enterprise-Knowledge-Base-Search`
-5. 选择订阅号：Please select an Azure Subscription to use:
-6. 选择部署区域：Please select an Azure location to use:
+4. 输入 Please enter a new environment name: `Enterprise-Knowledge-Base-Search`
+5. 选择订阅号：Please select an Azure Subscription to use: [你的订阅号]
+6. 选择部署区域：Please select an Azure location to use:[你要部署的区域]
     * 对于目标位置，当前支持此示例中使用的模型的区域为 **“美国东部”** 或 **“美国中南部”** 。有关地区和型号的最新列表，请查看此处[here](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models)
 
 #### 从零开始：
