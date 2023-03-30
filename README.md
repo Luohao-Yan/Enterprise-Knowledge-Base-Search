@@ -128,4 +128,4 @@
 
 
 ### Louis Yan
-## power by https://github.com/Azure-Samples/azure-search-openai-demo
+#### power by https://github.com/Azure-Samples/azure-search-openai-demo
