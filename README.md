@@ -10,14 +10,20 @@
 
 ![RAG Architecture](docs/appcomponents.png)
 
-## 特点
+## 效果
 
 * 聊天和问答界面
 * 探索各种选项，以帮助用户通过引用、跟踪源内容等来评估响应的可信度。
 * 显示模型 （ChatGPT） 和检索器（认知搜索）之间的数据准备、提示构造和交互编排的可能方法
 * 直接在 UX 中进行设置，以调整行为并尝试选项
 
-![Chat screen](docs/chatscreen.png)
+![01](docs/Chatscreen.png)
+* 查询页面显示效果
+![01](docs/01.png)
+* 源文档页面显示效果
+![02](docs/02.png)
+* 摘取段落面显示效果
+![03](docs/03.png)
 
 ## 开始
 
@@ -50,12 +56,15 @@
 
 #### 项目初始化
 
-1. 创建一个新文件夹并在终端中切换到它
+1. 下载代码库并在终端中打开到它
 2. 运行 `azd login`
 3. 运行 `azd init`
 4. 输入 Please enter a new environment name: `Enterprise-Knowledge-Base-Search`
-5. 选择订阅号：Please select an Azure Subscription to use: [你的订阅号]
-6. 选择部署区域：Please select an Azure location to use:[你要部署的区域]
+5. 选择订阅号：`Please select an Azure Subscription to use: {Name of existing resource group that OpenAI service is provisioned to}`
+6. 选择部署区域：`Please select an Azure location to use:{Name of existing resource group that OpenAI service is provisioned to}`
+它将如下所示：
+
+!['运行azd init的输出'](assets/init.png)
     * 对于目标位置，当前支持此示例中使用的模型的区域为 **“美国东部”** 或 **“美国中南部”** 。有关地区和型号的最新列表，请查看此处[here](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models)
 
 #### 从零开始：
@@ -78,7 +87,7 @@
 4. 运行 `azd env set AZURE_OPENAI_GPT_DEPLOYMENT {Name of existing GPT deployment}`. 仅当您的 ChatGPT 部署不是默认的“davinci”时才需要。
 5. 运行 `azd up`
 
-> 仅当您的 ChatGPT 部署不是默认的“davinci”时才需要。 `./infra/main.parameters.json` for list of environment variables to pass to `azd env set` 
+> 仅当您的 ChatGPT 部署不是默认的“davinci”时才需要。 `./infra/main.parameters.json` -- `azd env set` 
 
 #### 部署或重新部署存储库的本地克隆：
 * 只需运行 `azd up`
