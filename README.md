@@ -1,7 +1,7 @@
 # ChatGPT + 企业数据与 Azure OpenAI 和认知搜索
 
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=599293758&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
-[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/azure-search-openai-demo)
+[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Luohao-Yan/Enterprise-Knowledge-Base-Search)
 
 此示例演示了使用检索增强生成模式对自己的数据创建类似 ChatGPT 的体验的几种方法。它使用 Azure OpenAI Service 访问 ChatGPT 模型 （gpt-35-turbo），并使用 Azure 认知搜索进行数据索引和检索。
 
@@ -44,22 +44,25 @@
 在 GitHub 代码空间或 VS 代码远程容器中运行
 
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=599293758&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
-[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/azure-search-openai-demo)
+[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Luohao-Yan/Enterprise-Knowledge-Base-Search)
 
 ### 安装
 
 #### 项目初始化
 
 1. 创建一个新文件夹并在终端中切换到它
-1. 运行 `azd login`
-1. 运行 `azd init -t Enterprise-Knowledge-Base-Search-master`
-    * 对于目标位置，当前支持此示例中使用的模型的区域为 ** “美国东部” ** 或 ** “美国中南部” ** 。有关地区和型号的最新列表，请查看此处[here](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models)
+2. 运行 `azd login`
+3. 运行 `azd init`
+4. 输入`Enterprise-Knowledge-Base-Search`
+5. 选择订阅号：Please select an Azure Subscription to use:
+6. 选择部署区域：Please select an Azure location to use:
+    * 对于目标位置，当前支持此示例中使用的模型的区域为 **“美国东部”** 或 **“美国中南部”** 。有关地区和型号的最新列表，请查看此处[here](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models)
 
 #### 从零开始：
 
 如果没有任何预先存在的 Azure 服务，并且想要从全新部署开始，请执行以下命令。 
 1. - 运行 `azd up`  - 这将预配 Azure 资源并将此示例部署到这些资源，包括基于文件夹中找到的文件生成搜索索引。`./data` folder.
-1. 成功部署应用程序后，您将看到打印到控制台的 URL。单击该 URL 以在浏览器中与应用程序进行交互。 
+2. 成功部署应用程序后，您将看到打印到控制台的 URL。单击该 URL 以在浏览器中与应用程序进行交互。 
 
 它将如下所示：
 
@@ -70,10 +73,10 @@
 #### 使用现有资源：
 
 1. 运行 `azd env set AZURE_OPENAI_SERVICE {Name of existing OpenAI service}`
-1. 运行 `azd env set AZURE_OPENAI_RESOURCE_GROUP {Name of existing resource group that OpenAI service is provisioned to}`
-1. 运行 `azd env set AZURE_OPENAI_CHATGPT_DEPLOYMENT {Name of existing ChatGPT deployment}`. 仅当您的 ChatGPT 部署不是默认的“Chat”时才需要。
-1. 运行 `azd env set AZURE_OPENAI_GPT_DEPLOYMENT {Name of existing GPT deployment}`. 仅当您的 ChatGPT 部署不是默认的“davinci”时才需要。
-1. 运行 `azd up`
+2. 运行 `azd env set AZURE_OPENAI_RESOURCE_GROUP {Name of existing resource group that OpenAI service is provisioned to}`
+3. 运行 `azd env set AZURE_OPENAI_CHATGPT_DEPLOYMENT {Name of existing ChatGPT deployment}`. 仅当您的 ChatGPT 部署不是默认的“Chat”时才需要。
+4. 运行 `azd env set AZURE_OPENAI_GPT_DEPLOYMENT {Name of existing GPT deployment}`. 仅当您的 ChatGPT 部署不是默认的“davinci”时才需要。
+5. 运行 `azd up`
 
 > 仅当您的 ChatGPT 部署不是默认的“davinci”时才需要。 `./infra/main.parameters.json` for list of environment variables to pass to `azd env set` 
 
@@ -125,3 +128,4 @@
 
 
 ### Louis Yan
+## power by https://github.com/Azure-Samples/azure-search-openai-demo
