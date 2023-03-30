@@ -27,7 +27,7 @@
 
 ## 开始
 
-> **重要:** 若要部署和运行此示例，需要一个为 >**[Azure OpenAI 服务启用访问权限的 Azure 订阅](https://azure.microsoft.com/zh-cn/free/)**您可以在此处请求访问权限。还可以访问此处获取一些免费的 Azure 额度，以帮助你入门。
+> **重要:** 若要部署和运行此示例，需要一个为 [Azure OpenAI 服务启用访问权限的 Azure 订阅](https://azure.microsoft.com/zh-cn/free/) 您可以在此处请求访问权限。还可以访问此处获取一些免费的 Azure 额度，以帮助你入门。
 
 
 
@@ -137,7 +137,7 @@
 ### 故障 排除
 
 如果在运行 ：  `azd deploy`: `read /tmp/azd1992237260/backend_env/lib64: is a directory`,时看到此错误，请删除 并重新运行该命令。`./app/backend/backend_env folder` and re-run the `azd deploy` 。此处正在跟踪此问题：https://github.com/Azure/azure-dev/issues/1237
-* [如果有部署问题请在此处获得解决](https://learn.microsoft.com/zh-cn/azure/developer/azure-developer-cli/troubleshoot)
+>* [如果有部署问题请在此处获得解决](https://learn.microsoft.com/zh-cn/azure/developer/azure-developer-cli/troubleshoot)
 
 ### Secondary author Louis Yan 
 #### power by https://github.com/Azure-Samples/azure-search-openai-demo
