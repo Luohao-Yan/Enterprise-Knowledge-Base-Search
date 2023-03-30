@@ -125,6 +125,9 @@
 ### Azure OpenAI Service
 >注意：本演示中使用的 PDF 文档包含使用语言模型（Azure OpenAI 服务）生成的信息。这些文档中包含的信息仅用于演示目的，并不反映 Microsoft 的意见或信念。Microsoft 对本文档所含信息的完整性、准确性、可靠性、适用性或可用性不作任何明示或暗示的陈述或保证。微软保留所有权利。
 
+### 注意事项
+>演示内容中的文件不得作为其他用途，仅做demo演示。项目为开源项目，在此申明作者并不负责。
+
 ### 常见问题
 
 ***Question***: 当 Azure 认知搜索支持搜索大型文档时，为什么我们需要将 PDF 分解为块？
@@ -134,7 +137,7 @@
 ### 故障 排除
 
 如果在运行 ：  `azd deploy`: `read /tmp/azd1992237260/backend_env/lib64: is a directory`,时看到此错误，请删除 并重新运行该命令。`./app/backend/backend_env folder` and re-run the `azd deploy` 。此处正在跟踪此问题：https://github.com/Azure/azure-dev/issues/1237
+如果有部署问题请在此处获得解决(https://learn.microsoft.com/zh-cn/azure/developer/azure-developer-cli/troubleshoot)
 
-
-### Louis Yan
+### Secondary author Louis Yan 
 #### power by https://github.com/Azure-Samples/azure-search-openai-demo
