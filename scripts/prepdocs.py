@@ -47,9 +47,9 @@ search_creds = default_creds if args.searchkey == None else AzureKeyCredential(a
 if not args.skipblobs:
     storage_creds = default_creds if args.storagekey == None else args.storagekey
 if not args.localpdfparser:
-    # check if Azure Form Recognizer credentials are provided
+    # 检查是否提供了Azure表单识别器凭据
     if args.formrecognizerservice == None:
-        print("Error: Azure Form Recognizer service is not provided. Please provide formrecognizerservice or use --localpdfparser for local pypdf parser.")
+        print("Error: 不提供Azure表单识别器服务。请为本地pypdf解析器提供formrecognizerservice或使用——localpdfparser。")
         exit(1)
     formrecognizer_creds = default_creds if args.formrecognizerkey == None else AzureKeyCredential(args.formrecognizerkey)
 
@@ -65,7 +65,7 @@ def upload_blobs(filename):
     if not blob_container.exists():
         blob_container.create_container()
 
-    # if file is PDF split into pages and upload each page as a separate blob
+    # 如果文件是PDF分割成页面，并上传每个页面作为一个单独的blob
     if os.path.splitext(filename)[1].lower() == ".pdf":
         reader = PdfReader(filename)
         pages = reader.pages
@@ -132,19 +132,19 @@ def get_document_text(filename):
         for page_num, page in enumerate(form_recognizer_results.pages):
             tables_on_page = [table for table in form_recognizer_results.tables if table.bounding_regions[0].page_number == page_num + 1]
 
-            # mark all positions of the table spans in the page
+            # 在页面中标记表跨度的所有位置
             page_offset = page.spans[0].offset
             page_length = page.spans[0].length
             table_chars = [-1]*page_length
             for table_id, table in enumerate(tables_on_page):
                 for span in table.spans:
-                    # replace all table spans with "table_id" in table_chars array
+                    # 在table_chars数组中用"table_id"替换所有表跨度
                     for i in range(span.length):
                         idx = span.offset - page_offset + i
                         if idx >=0 and idx < page_length:
                             table_chars[idx] = table_id
 
-            # build page text by replacing charcters in table spans with table html
+            # 通过用表HTML替换表span中的字符来构建页面文本
             page_text = ""
             added_tables = set()
             for idx, table_id in enumerate(table_chars):
@@ -183,17 +183,17 @@ def split_text(page_map):
         if end > length:
             end = length
         else:
-            # Try to find the end of the sentence
+            # 试着找出句子的结尾
             while end < length and (end - start - MAX_SECTION_LENGTH) < SENTENCE_SEARCH_LIMIT and all_text[end] not in SENTENCE_ENDINGS:
                 if all_text[end] in WORDS_BREAKS:
                     last_word = end
                 end += 1
             if end < length and all_text[end] not in SENTENCE_ENDINGS and last_word > 0:
-                end = last_word # Fall back to at least keeping a whole word
+                end = last_word # 至少要记住一个完整的单词
         if end < length:
             end += 1
 
-        # Try to find the start of the sentence or at least a whole word boundary
+        # 试着找到句子的开头，或者至少是整个单词的边界
         last_word = -1
         while start > 0 and start > end - MAX_SECTION_LENGTH - 2 * SENTENCE_SEARCH_LIMIT and all_text[start] not in SENTENCE_ENDINGS:
             if all_text[start] in WORDS_BREAKS:
@@ -209,9 +209,9 @@ def split_text(page_map):
 
         last_table_start = section_text.rfind("<table")
         if (last_table_start > 2 * SENTENCE_SEARCH_LIMIT and last_table_start > section_text.rfind("</table")):
-            # If the section ends with an unclosed table, we need to start the next section with the table.
-            # If table starts inside SENTENCE_SEARCH_LIMIT, we ignore it, as that will cause an infinite loop for tables longer than MAX_SECTION_LENGTH
-            # If last table starts inside SECTION_OVERLAP, keep overlapping
+            #如果section以一个未关闭的表结束，我们需要从这个表开始下一个section。
+            #如果表在SENTENCE_SEARCH_LIMIT内开始，则忽略它，因为这将导致比MAX_SECTION_LENGTH更长的表进行无限循环
+            # 如果最后一个表开始于SECTION_OVERLAP内，保持重叠g
             if args.verbose: print(f"Section ends with unclosed table, starting next section with the table at page {find_page(start)} offset {start} table start {last_table_start}")
             start = min(end - SECTION_OVERLAP, start + last_table_start)
         else:
@@ -288,7 +288,7 @@ def remove_from_index(filename):
             break
         r = search_client.delete_documents(documents=[{ "id": d["id"] } for d in r])
         if args.verbose: print(f"\tRemoved {len(r)} sections from index")
-        # It can take a few seconds for search results to reflect changes, so wait a bit
+        # 搜索结果可能需要几秒钟才能反映变化，所以稍等片刻
         time.sleep(2)
 
 if args.removeall:
