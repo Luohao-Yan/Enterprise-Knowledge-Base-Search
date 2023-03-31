@@ -5,7 +5,7 @@
 
 此示例演示了使用检索增强生成模式对自己的数据创建类似 ChatGPT 的体验的几种方法。它使用 Azure OpenAI Service 访问 ChatGPT 模型 （gpt-35-turbo），并使用 Azure 认知搜索进行数据索引和检索。
 
-存储库包含示例数据，因此可以进行端到端尝试。在此示例应用程序中，我们使用名为 Contoso Electronics 的虚构公司，该体验允许其员工询问有关福利、内部策略以及职位描述和角色的问题。
+存储库包含示例数据，因此可以进行端到端尝试。在此示例应用程序中，我们使用了微软部分公开文档作为数据源来演示查询和问答内容。
 
 
 ![RAG Architecture](docs/appcomponents.png)
@@ -59,9 +59,9 @@
 1. 下载代码库并在终端中打开到它
 2. 运行 `azd login`
 3. 运行 `azd init`
-4. 输入 Please enter a new environment name: `Enterprise-Knowledge-Base-Search`
-5. 选择订阅号：`Please select an Azure Subscription to use: {Name of existing resource group that OpenAI service is provisioned to}`
-6. 选择部署区域：`Please select an Azure location to use:{Name of existing resource group that OpenAI service is provisioned to}`
+4. 输入 *Please enter a new environment name:* `Enterprise-Knowledge-Base-Search`
+5. 选择订阅号：*Please select an Azure Subscription to use:* `{Name of existing resource group that OpenAI service is provisioned to}`
+6. 选择部署区域：*Please select an Azure location to use:*`{Name of existing resource group that OpenAI service is provisioned to}`
 它将如下所示：
 
 !['运行azd init的输出'](assets/init.png)
